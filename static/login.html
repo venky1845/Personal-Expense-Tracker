@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login — Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="page-brand">
+        <div class="brand-icon">◈</div>
+        <span class="brand-label">Personal Expense Tracker</span>
+    </div>
+
+    <h2>Welcome back</h2>
+    <p style="text-align:center; margin-bottom:28px; font-size:13px;">Sign in to your account</p>
+
+    <input type="text"     id="loginUsername" placeholder="Username">
+    <input type="password" id="loginPassword" placeholder="Password">
+
+    <div id="loginMessage"></div>
+
+    <button class="full" onclick="loginUser()">Sign In</button>
+
+    <div class="link-row">
+        Don't have an account? <a href="register.html">Register</a>
+    </div>
+</div>
+<script src="index.js"></script>
+<script>
+    (async function checkSession() {
+        let res = await fetch("/expenses/summary", { credentials: "include" });
+        if (res.status === 200) window.location.href = "dashboard.html";
+    })();
+</script>
+</body>
+</html>

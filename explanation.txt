@@ -1,0 +1,39 @@
+1)What is a foreign key and what does ON DELETE CASCADE do in your expenses table?
+A foreign key is used to create a relationship between two tables in a database. In this project, 
+the user_id column in the expenses table is a foreign key that references the id column in the users table.
+This means every expense belongs to a specific user.
+Example:
+FOREIGN KEY (user_id) REFERENCES users(id)
+ON DELETE CASCADE means when a user account is deleted, all expenses belonging to that user are automatically deleted from the expenses table. 
+This prevents unused or orphan expense records from remaining in the database.
+
+2)How does your backend make sure User A cannot see User B's expenses?
+The backend checks the session before every expense route. After login, the logged-in user's id is stored in:
+session['user_id']
+All SQL queries include:
+WHERE user_id = session['user_id']
+Example:
+SELECT * FROM expenses
+WHERE user_id = %s
+This ensures users can only access their own expenses. Even if a user changes the expense id manually in the URL, 
+the query still checks the logged-in user's id before returning, updating, or deleting data.
+
+3)What SQL query did you use for the category summary on the dashboard? Write it out.
+SELECT category, SUM(amount) AS total
+FROM expenses
+WHERE user_id = %s
+GROUP BY category;
+
+4)What was the hardest part of this task and how did you solve it?
+The hardest part of this task for me was the backend implementation using Flask and MySQL.
+I faced difficulties while:
+creating protected routes
+handling sessions correctly
+connecting frontend requests with backend APIs
+implementing CRUD operations for expenses
+making sure each user could only access their own data
+
+I solved these issues by debugging each error step by step, checking browser console errors, verifying Flask routes, and testing API responses carefully.
+I used session['user_id'] together with SQL queries containing:
+WHERE user_id = %s
+to ensure proper user-specific data isolation and security.

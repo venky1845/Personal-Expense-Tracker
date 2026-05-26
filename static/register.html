@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register — Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="page-brand">
+        <div class="brand-icon">◈</div>
+        <span class="brand-label">Personal Expense Tracker</span>
+    </div>
+
+    <h2>Create account</h2>
+    <p style="text-align:center; margin-bottom:28px; font-size:13px;">Start tracking your expenses today</p>
+
+    <input type="text"     id="registerUsername" placeholder="Username" oninput="clearMsg()">
+    <input type="email"    id="registerEmail"    placeholder="Email address" oninput="clearMsg()">
+    <input type="password" id="registerPassword" placeholder="Password (min 6 chars)" oninput="clearMsg()">
+    <input type="password" id="confirmPassword"  placeholder="Confirm password" oninput="clearMsg()">
+
+    <div id="message"></div>
+
+    <button class="full" onclick="registerUser()">Create Account</button>
+
+    <div class="link-row">
+        Already have an account? <a href="login.html">Sign in</a>
+    </div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
