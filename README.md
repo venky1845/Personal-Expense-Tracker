@@ -1,4 +1,4 @@
-# Ledger — Personal Expense Tracker
+# Personal Expense Tracker
 
 A full stack web application where users can register, log in, and manage their personal expenses. Each user's data is private and secured with session-based authentication.
 
